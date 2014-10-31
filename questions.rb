@@ -115,6 +115,8 @@ end
 # get the average from an array, rounded to the nearest integer
 # so [10, 15, 25] should return 33
 def average_of_array(array)
+	n = array.inject {|sum, n| sum + n}.to_f / array.size
+	n.ceil
 end
 
 # get all the elements in an array, up until the first element
