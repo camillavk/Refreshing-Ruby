@@ -8,12 +8,12 @@ require_relative './questions'
 
 describe 'the Friday test :)' do
   
-  fspecify 'select_elements_starting_with_a' do
+  specify 'select_elements_starting_with_a' do
     n = select_elements_starting_with_a ['bananas', 'apples', 'pears', 'avocados']
     expect(n).to eq ['apples', 'avocados']
   end
 
-  specify 'select_elements_starting_with_vowel' do
+  fspecify 'select_elements_starting_with_vowel' do
     n = select_elements_starting_with_vowel ['john', 'david', 'omar', 'fred', 'idris', 'angela']
     expect(n).to eq ['omar', 'idris', 'angela']
   end
