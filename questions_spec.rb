@@ -170,8 +170,8 @@ describe 'the Friday test :)' do
     a = check_a_string_for_special_characters 'ABCdef123'
     b = check_a_string_for_special_characters 'ABC@def123!'
 
-    expect(a).to be_false
-    expect(b).to be_true
+    expect(a).to be false
+    expect(b).to be true
   end
 
   specify 'get_upper_limit_of' do
@@ -183,8 +183,8 @@ describe 'the Friday test :)' do
     a = is_a_3_dot_range? 1..20
     b = is_a_3_dot_range? 1...20
 
-    expect(a).to be_false
-    expect(b).to be_true
+    expect(a).to be false
+    expect(b).to be true
   end
 
   specify 'square_root_of' do
@@ -211,13 +211,13 @@ describe 'the Friday test :)' do
     expect(b).to eq false
   end
 
-  fspecify 'your_birthday_is_on_a_friday_in_the_year' do
+  specify 'your_birthday_is_on_a_friday_in_the_year' do
     n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
     expect(n).to eq 2016
   end
 
   specify 'count_words_of_each_length_in_a_file' do
     n = count_words_of_each_length_in_a_file('lorem.txt') || []
-    expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3}) 
+    expect(n.sort).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3}) 
   end
 end

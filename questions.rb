@@ -205,7 +205,7 @@ end
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
-	!string.gsub(/[A-Za-z0-9]/, '').empty?
+	string.gsub(/[A-Za-z0-9]/, '').chars.any?
 end
 #check!!
 
@@ -218,7 +218,7 @@ end
 # should return true for a 3 dot range like 1...20, false for a 
 # normal 2 dot range
 def is_a_3_dot_range?(range)
-	range.exlude_end?
+	range.exclude_end?
 end
 #check!!
 
@@ -266,12 +266,38 @@ end
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
 def count_words_of_each_length_in_a_file(file_path)
+	hash = {}
+	file = File.read(file_path)
+	file.each_line do |line|
+		words = line.split
+		words.each do |a|
+			if hash.has_key?(a.length) 
+				# a.length = a.length
+				hash[a.length] = hash[a.length] + 1
+			else
+				hash[a.length] = 1
+			end
+		end
+	end
+	return hash.to_h
+	# File.read(file_path)
+
 end
 
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo
+	1.upto(100) do |n|
+	string = ''
+	if (n/3.0).round == (n/3.0)
+		string << "fizz"
+	end
+	if (n/5.0).round == (n/5.0)
+		string << "buzz"
+	end
+		puts string.empty? ? n : string
+	end
 end
 
 # print the lyrics of the song 99 bottles of beer on the wall
@@ -281,4 +307,15 @@ end
 # at the end.
 # (there's no RSpec test for this one)
 def ninety_nine_bottles_of_beer
+	99.downto(1) do |n|
+		bottles = Hash.new('bottles')
+		bottles[1] = 'bottle'
+
+		puts "#{n} #{bottles[n]} of beer on the wall"
+		puts "#{n} #{bottles[n]} of beer"
+		puts "take one down, pass it around"
+		puts "#{n-1} #{bottles[n-1]} of beer on the wall\n\n" if n>1
+	end
+	puts "no more bottles of beer on the wall"
 end
+
